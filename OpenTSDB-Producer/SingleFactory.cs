@@ -1,20 +1,25 @@
 ﻿using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Core;
 
 namespace OpenTSDB_Producer;
 
 public class SingleFactory
 {
-    static private ILoggerFactory? loggerFactory = null;
+    private static ILoggerFactory? loggerFactory = null;
     
     private SingleFactory() {}
 
-    static public ILoggerFactory GetLoggerFactory()
+    public static ILoggerFactory GetLoggerFactory()
     {
         if (loggerFactory == null)
         {
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateLogger();
             loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder.AddConsole();
+                builder.AddSerilog();
             });
         }
 

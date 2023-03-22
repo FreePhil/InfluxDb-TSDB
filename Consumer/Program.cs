@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using InfluxDB.Client;
-using InfluxDB.Client.Api.Domain;
 using Microsoft.Extensions.Logging;
 using OpenTSDB_Producer;
 
@@ -27,9 +26,9 @@ for (int i = 0; i < 1000; i++)
 {
     var data = await client.GetQueryApi().QueryAsync<Temperature>(flux, "henge");
     var temperature = data[0];
-    logger.LogInformation("Average temperature: {Temperature}", temperature.Value);
+    logger.LogInformation("Average temperature: {Temperature:0.00}", temperature.Value);
 
-    Thread.Sleep(5000);
+    Thread.Sleep(2000);
 }
 
 Console.WriteLine("Press enter to end the program.");
