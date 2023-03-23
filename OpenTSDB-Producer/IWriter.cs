@@ -2,5 +2,5 @@
 
 public interface IWriter
 {
-    void Write(string location, double value);
+    void Write(string location, double value, double height);
 }

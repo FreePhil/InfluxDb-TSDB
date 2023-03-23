@@ -21,8 +21,9 @@ public class DemoDataAppender
         {
             var location = locations[randomizer.Next(4)];
             var value = randomizer.Next(20) + 20.0;
+            var height = randomizer.Next(2000) + 1000;
             
-            writer.Write(location, value);
+            writer.Write(location, value, height);
             Thread.Sleep(200);
         }            
     }

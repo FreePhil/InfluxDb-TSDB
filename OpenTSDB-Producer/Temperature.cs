@@ -2,7 +2,7 @@
 
 namespace OpenTSDB_Producer;
 
-[Measurement("temperature")]
+[Measurement("temperature1")]
 public class Temperature
 {
     [Column("location", IsTag = true)] 
@@ -10,6 +10,9 @@ public class Temperature
     
     [Column("value")]
     public double Value { get; set; }
+    
+    [Column("height")]
+    public double Height { get; set; }
     
     [Column(IsTimestamp = true)]
     public DateTime Time { get; set; }

@@ -16,6 +16,7 @@ public class SingleFactory
         {
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
+                .MinimumLevel.Debug()
                 .CreateLogger();
             loggerFactory = LoggerFactory.Create(builder =>
             {

@@ -8,6 +8,15 @@
 
 ## Getting Started
 
+### Brief
+#### About InfluxDB
+* Bucket: like database in SQL
+* Measurement: like table in SQL 
+* Data Point: like row in SQL
+  * Tag keys: `container`, `location`..., 可自動 Index 的欄位, 用來篩選條件
+  * Field keys: `ceilius`, `height`, `weight`..., 用來儲存值, 如溫度, 高度, 重量等
+  * Timestamp: 唯一值, 類似 primary key 
+
 ### Dependencies
 
 * Describe any prerequisites, libraries, OS version, etc., needed before installing program.

@@ -15,7 +15,7 @@ public class InfluxDbWriter: IWriter
 
     private ILogger logger = SingleFactory.GetLoggerFactory().CreateLogger<InfluxDbWriter>();
     
-    public void Write(string location, double value)
+    public void Write(string location, double value, double height)
     {
         using (var influxDBClient = new InfluxDBClient(url, token))
         using (var writeApi = influxDBClient.GetWriteApi())
@@ -24,10 +24,11 @@ public class InfluxDbWriter: IWriter
             {
                 Location = location,
                 Value = value,
+                Height = height,
                 Time = DateTime.UtcNow
             };
-            logger.LogInformation("Record value {Value} at {Location} on {Time}", 
-                temperature.Value, temperature.Location, temperature.Time);
+            logger.LogInformation("Record value {Value}, {Height} at {Location} on {Time}", 
+                temperature.Value, temperature.Height, temperature.Location, temperature.Time, temperature.Height);
             writeApi.WriteMeasurement(temperature, WritePrecision.Ns, bucket, org);
         }
     }
